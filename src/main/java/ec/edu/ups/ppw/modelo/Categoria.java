@@ -12,7 +12,7 @@ public class Categoria {
 	@Id
 	@Column(name="cat_id")
 	int id;
-	@Column(name="aut_nombre")
+	@Column(name="cat_nombre")
 	String nombre;
 	public int getId() {
 		return id;
