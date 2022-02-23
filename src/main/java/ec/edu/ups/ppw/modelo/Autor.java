@@ -1,5 +1,7 @@
 package ec.edu.ups.ppw.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TBL_AUTOR")
-public class Autor {
+public class Autor implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="aut_id")
 	int id;

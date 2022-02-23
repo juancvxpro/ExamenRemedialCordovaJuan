@@ -1,5 +1,6 @@
 package ec.edu.ups.ppw.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,9 +13,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TBL_LIBRO")
-public class Libro {
+@Table(name="TBL_RESERVA")
+public class Libro implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="lib_id")
 	int id;
@@ -37,7 +43,7 @@ public class Libro {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="lib_autores")
-	private List<Autor> autores;
+	private List<Autor> autores	;
 
 	public int getId() {
 		return id;

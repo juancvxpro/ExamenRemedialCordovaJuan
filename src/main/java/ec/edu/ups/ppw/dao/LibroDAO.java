@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ec.edu.ups.ppw.modelo.Categoria;
 import ec.edu.ups.ppw.modelo.Libro;
 
 
@@ -66,6 +67,40 @@ public class LibroDAO {
    	 return q.getResultList();
    	 
     }
+    
+    public List <Libro> getListCategoria(String nombre){
+      	 
+    	Categoria cat = new Categoria();
+    	cat = buscarCat(nombre);
+      	 String jpql ="SELECT p FROM Libro p "
+      	 		+ "WHERE cat_id LIKE ?1";
+      	 System.out.println(jpql);
+      	 
+      	 Query q = em.createQuery(jpql,Libro.class);
+      	 
+      	 q.setParameter(1,cat.getId());
+      	 
+      	 return q.getResultList();
+      	 
+       }
+    
+    
+    public Categoria buscarCat (String nombre) {
+    	Categoria cat = new Categoria();
+    	
+
+     	 String jpql ="SELECT p FROM Categoria p "
+     	 		+ "WHERE cat_nombre LIKE ?1";
+     	 System.out.println(jpql);
+     	 
+     	 Query q = em.createQuery(jpql,Libro.class);
+     	 
+     	 q.setParameter(1,nombre);
+    	  List<Categoria> ct = q.getResultList();
+  	return ct.get(0);
+    }
+    
+    
 
 
 }
